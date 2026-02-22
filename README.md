@@ -9,3 +9,6 @@ To make this safe:
 Run this in prior for each lap to work with each lap enviroments:
 python -m venv .venv
 source .venv/bin/activate
+
+Run this to see which located source python are working on:
+python -c "import sys; print(sys.executable)"
