@@ -1,0 +1,32 @@
+The code were running on Google Collap, with 
+
+CUDA Available: True
+GPU Name: Tesla T4
+Total Memory (GB): 15.637086208
+
+Below is the ouput:
+
+10788929
+step=0: train loss = 4.2846, val loss = 4.2820
+step=300: train loss = 2.2123, val loss = 2.2519
+step=600: train loss = 1.7747, val loss = 1.9109
+step=900: train loss = 1.5750, val loss = 1.7432
+step=1200: train loss = 1.4623, val loss = 1.6594
+step=1500: train loss = 1.3940, val loss = 1.6051
+step=1800: train loss = 1.3391, val loss = 1.5589
+step=2100: train loss = 1.2968, val loss = 1.5426
+step=2400: train loss = 1.2624, val loss = 1.5147
+step=2700: train loss = 1.2304, val loss = 1.5015
+step=3000: train loss = 1.2022, val loss = 1.4951
+step=3300: train loss = 1.1761, val loss = 1.4906
+step=3600: train loss = 1.1557, val loss = 1.4842
+step=3900: train loss = 1.1301, val loss = 1.4831
+step=4200: train loss = 1.1062, val loss = 1.4814
+step=4500: train loss = 1.0819, val loss = 1.4848
+step=4800: train loss = 1.0613, val loss = 1.4931
+
+But what prison: I will stead for the fame?
+For my Capitol, the Ludge, welcome.
+
+ROMEO:
+'Tis survant

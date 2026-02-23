@@ -26,9 +26,17 @@ n_heads = 6
 n_layer = 6
 dropout = .2
 
+# These hyperparamtes below work for CPU
+# batch_size = 32
+# block_size = 128
+# n_embd = 128
+# n_heads = 4
+# n_layer = 4
+# dropout = 0.1
+
 torch.manual_seed(1337)
 
-with open('input.txt', 'r', encoding='utf-8') as f:
+with open('/content/Deep-Learning-Course-Ensae/session-4/input.txt', 'r', encoding='utf-8') as f:
     text = f.read()
 
 # create vocabulary
@@ -44,7 +52,7 @@ def encode(s): return [stoi[c] for c in s]
 def decode(l): return ''.join([itos[i] for i in l])
 
 
-data = torch.tensor(encode(text), dtype=torch.long)
+data = torch.tensor(encode(text), dtype=torch.long).to(device)
 
 # Let's now split up the data into train and validation sets
 n = int(0.9*len(data))  # first 90% will be train, rest val
@@ -88,6 +96,7 @@ class Head(nn.Module):
         # store a persistent buffer for the forward pass
         self.register_buffer('tril', torch.tril(
             torch.ones(block_size, block_size)))
+        self.dropout = nn.Dropout(dropout)
 
     def forward(self, x):
         B, T, C = x.shape
@@ -98,10 +107,11 @@ class Head(nn.Module):
 
         att = q @ k.transpose(-2, -1)
         att = att / math.sqrt(k.shape[-1])
-
         att = att.masked_fill(self.tril[:T, :T] == 0, float('-inf'))
+        att = F.softmax(att, dim=-1)
+        att = self.dropout(att)
 
-        out = F.softmax(att, dim=-1) @ v
+        out = att @ v
 
         return out
 
@@ -111,10 +121,12 @@ class MultiHeadAttention(nn.Module):
         super().__init__()
         self.heads = nn.ModuleList([Head(head_size) for _ in range(num_heads)])
         self.proj = nn.Linear(num_heads * head_size, n_embd)
+        self.dropout = nn.Dropout(dropout)
 
     def forward(self, x):
         out = torch.cat([h(x) for h in self.heads], dim=-1)
         out = self.proj(out)
+        out = self.dropout(out)
 
         return out
 
@@ -127,7 +139,8 @@ class FeedForward(nn.Module):
         self.net = nn.Sequential(
             nn.Linear(n_embd, 4 * n_embd),
             nn.ReLU(),
-            nn.Linear(4 * n_embd, n_embd)
+            nn.Linear(4 * n_embd, n_embd),
+            nn.Dropout(dropout),
         )
 
     def forward(self, x):
@@ -138,6 +151,7 @@ class FeedForward(nn.Module):
 class Block(nn.Module):
 
     def __init__(self, n_embd, n_head):
+
         super().__init__()
         head_size = n_embd // n_head
 
@@ -150,9 +164,9 @@ class Block(nn.Module):
     def forward(self, x):
 
         x = x + self.sa(self.ln1(x))
-        out = x + (self.ffwd(self.ln2(x)))
+        x = x + (self.ffwd(self.ln2(x)))
 
-        return out
+        return x
 
 
 class GPT(nn.Module):
@@ -167,12 +181,12 @@ class GPT(nn.Module):
         self.blocks = nn.Sequential(
             *[Block(n_embd, n_heads) for _ in range(n_layer)])
 
-        self.ln_f = nn.Linear(n_embd, vocab_size)
-
+        self.ln_f = nn.LayerNorm(n_embd)
         self.lm_head = nn.Linear(n_embd, vocab_size)
 
     def forward(self, idx, targets=None):
         B, T = idx.shape
+
         token_emb = self.token_embedding_table(idx)  # (B,T,C)
         pos_emb = self.pos_embedding_table(
             torch.arange(T, device=device))  # (T, C)
