@@ -254,9 +254,9 @@ def train(model, num_epochs=10):
                 layer.register_forward_hook(get_activation(f'{i}'))
         print(f'{count} layers tracked')
 
-        for images, _ in valid_loader:
-            # run inference
-            model(images.to(device))
+        # for images, _ in valid_loader:
+        #     # run inference
+        #     model(images.to(device))
 
         print('Statistics of the network: ')
         for k, v in activation.items():
@@ -327,7 +327,10 @@ class ResidualBlock(nn.Module):
         out = self.conv1(x)
         out = self.conv2(out)
 
-        out += identity  # skip connection
+        if self.downsample is not None:
+            identity = self.downsample(x)
+
+        out += identity
         out = self.relu(out)
 
         return out
@@ -372,6 +375,9 @@ class Bottleneck(nn.Module):
         out = self.conv1(x)
         out = self.conv2(out)
         out = self.conv3(out)
+
+        if self.downsample is not None:
+            identity = self.downsample(x)
 
         out += identity
         out = self.relu(out)
