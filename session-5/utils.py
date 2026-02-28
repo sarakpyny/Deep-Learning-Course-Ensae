@@ -1,4 +1,4 @@
-import numpy as np 
+import numpy as np
 
 # handle pytorch tensors etc, by using tensorboardX's method
 try:
@@ -6,6 +6,7 @@ try:
 except ImportError:
     def make_np(x):
         return np.array(x).copy().astype('float16')
+
 
 class RunningStats(object):
     """Computes running mean and standard deviation
@@ -16,7 +17,7 @@ class RunningStats(object):
 calculate-a-running-standard-deviation>
         * <http://mathcentral.uregina.ca/QQ/database/QQ.09.02/carlos1.html>
         * <https://gist.github.com/fvisin/5a10066258e43cf6acfa0a474fcdb59f>
-        
+
     Usage:
         rs = RunningStats()
         for i in range(10):
@@ -51,7 +52,7 @@ calculate-a-running-standard-deviation>
             prev_m = self.m.copy()
             self.m += (x - self.m) / self.n
             self.s += (x - prev_m) * (x - self.m)
-            
+
     def __add__(self, other):
         if isinstance(other, RunningStats):
             sum_ns = self.n + other.n
@@ -74,9 +75,9 @@ calculate-a-running-standard-deviation>
     @property
     def std(self):
         return np.sqrt(self.variance())
-        
+
     def __repr__(self):
         return '<RunningMean(mean={: 2.4f}, std={: 2.4f}, n={: 2f}, m={: 2.4f}, s={: 2.4f})>'.format(self.mean, self.std, self.n, self.m, self.s)
-        
+
     def __str__(self):
         return 'mean={: 2.4f}, std={: 2.4f}'.format(self.mean, self.std)
