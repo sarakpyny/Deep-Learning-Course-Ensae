@@ -1,0 +1,75 @@
+
+The output of trainnig models: for session 5
+
+plain-18: 11044810
+Epoch [1/10], Loss: 1.3420
+Accuracy of the network on the 5000 validation images: 56.9 %
+Epoch [2/10], Loss: 0.5982
+Accuracy of the network on the 5000 validation images: 70.66 %
+Epoch [3/10], Loss: 1.5214
+Accuracy of the network on the 5000 validation images: 75.94 %
+Epoch [4/10], Loss: 0.5449
+Accuracy of the network on the 5000 validation images: 79.08 %
+Epoch [5/10], Loss: 1.1052
+Accuracy of the network on the 5000 validation images: 80.08 %
+Epoch [6/10], Loss: 0.3075
+Accuracy of the network on the 5000 validation images: 81.92 %
+Epoch [7/10], Loss: 1.3856
+Accuracy of the network on the 5000 validation images: 81.24 %
+Epoch [8/10], Loss: 0.3177
+Accuracy of the network on the 5000 validation images: 82.72 %
+Epoch [9/10], Loss: 0.3727
+Accuracy of the network on the 5000 validation images: 83.24 %
+Epoch [10/10], Loss: 0.2151
+Accuracy of the network on the 5000 validation images: 83.48 %
+18 layers tracked
+Statistics of the network: 
+
+
+plain-34: 21152970
+Epoch [1/10], Loss: 1.4673
+Accuracy of the network on the 5000 validation images: 35.88 %
+Epoch [2/10], Loss: 2.5585
+Accuracy of the network on the 5000 validation images: 43.26 %
+Epoch [3/10], Loss: 1.5722
+Accuracy of the network on the 5000 validation images: 54.46 %
+Epoch [4/10], Loss: 2.3248
+Accuracy of the network on the 5000 validation images: 62.98 %
+Epoch [5/10], Loss: 1.0027
+Accuracy of the network on the 5000 validation images: 70.24 %
+Epoch [6/10], Loss: 0.7138
+Accuracy of the network on the 5000 validation images: 72.18 %
+Epoch [7/10], Loss: 0.5141
+Accuracy of the network on the 5000 validation images: 74.58 %
+Epoch [8/10], Loss: 1.0262
+Accuracy of the network on the 5000 validation images: 76.96 %
+Epoch [9/10], Loss: 1.5856
+Accuracy of the network on the 5000 validation images: 77.56 %
+Epoch [10/10], Loss: 0.8811
+Accuracy of the network on the 5000 validation images: 79.02 %
+34 layers tracked
+Statistics of the network:
+
+resnet-34: 21289802
+Epoch [1/10], Loss: 3.0918
+Accuracy of the network on the 5000 validation images: 57.14 %
+Epoch [2/10], Loss: 0.2494
+Accuracy of the network on the 5000 validation images: 71.74 %
+Epoch [3/10], Loss: 0.4602
+Accuracy of the network on the 5000 validation images: 76.28 %
+Epoch [4/10], Loss: 0.2515
+Accuracy of the network on the 5000 validation images: 78.48 %
+Epoch [5/10], Loss: 0.9727
+Accuracy of the network on the 5000 validation images: 80.68 %
+Epoch [6/10], Loss: 0.4870
+Accuracy of the network on the 5000 validation images: 81.72 %
+Epoch [7/10], Loss: 1.0189
+Accuracy of the network on the 5000 validation images: 81.08 %
+Epoch [8/10], Loss: 0.3252
+Accuracy of the network on the 5000 validation images: 83.0 %
+Epoch [9/10], Loss: 0.4288
+Accuracy of the network on the 5000 validation images: 82.5 %
+Epoch [10/10], Loss: 0.7733
+Accuracy of the network on the 5000 validation images: 82.04 %
+36 layers tracked
+Statistics of the network: 
