@@ -1,14 +1,34 @@
-# ensae-dl-2025
+# Deep Learning Course – ENSAE
 
-Please run the `setup.ipynb` notebook **before the first class**. If you don't, you will waste precious time during the class.
+This repository contains practical exercises and implementations from the **ENSAE Deep Learning course**.
+Each folder corresponds to a session and includes lecture notes, problem notebooks, and solution implementations.
 
-You need to install the requirements `pip install -r requirements.txt` and the [graphviz library](https://www.graphviz.org/download/)
+## Structure
 
-To make this safe:
+```
+session-1 to session-6/
+```
 
-Run this in prior for each lap to work with each lap enviroments:
-python -m venv .venv
-source .venv/bin/activate
+Each session typically contains:
 
-Run this to see which located source python are working on:
-python -c "import sys; print(sys.executable)"
+* `session-X.pdf` – lecture notes
+* `problem.ipynb` – exercise notebook
+* `NY_Sarakpy_*.ipynb / .py` – completed solutions
+* datasets, utilities, or supporting scripts when needed
+
+## Topics Covered
+
+* Neural networks fundamentals
+* Character-level models
+* Training utilities
+* GPT-style text generation
+* Model experimentation
+* Generative models (VAE, Diffusion)
+
+## Setup
+
+For each lap session, run this
+
+```bash
+pip install -r requirements.txt
+```
