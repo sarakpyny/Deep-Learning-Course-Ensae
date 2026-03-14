@@ -27,8 +27,6 @@ Each session typically contains:
 
 ## Setup
 
-For each lap session, run this
-
 ```bash
 pip install -r requirements.txt
 ```
